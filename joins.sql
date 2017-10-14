@@ -49,7 +49,20 @@
 -- WHERE p.created_at > '2015-1-1'::date
 -- AND p.id = c.posts_id;
 
-SELECT p.title AS post_title, p.url AS post_url, c.body AS comment_body
+-- SELECT p.title AS post_title, p.url AS post_url, c.body AS comment_body
+-- FROM comments c
+-- JOIN posts p ON p.id = c.posts_id
+-- WHERE p.created_at > '2015-1-1'::date;
+
+--10
+-- SELECT p.title AS post_title, p.url as post_url, c.body AS comment_body
+-- FROM comments c
+-- JOIN posts p ON p.id = c.posts_id
+-- WHERE c.body LIKE '%USB%';
+
+--11
+SELECT p.title AS post_title, u.first_name, u.last_name, c.body AS comment_body
 FROM comments c
 JOIN posts p ON p.id = c.posts_id
-WHERE p.created_at > '2015-1-1'::date;
+JOIN users u ON u.id = p.users_id
+WHERE c.body LIKE '%matrix%';
